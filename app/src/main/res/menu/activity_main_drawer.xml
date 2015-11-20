@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <!--<item
+            android:id="@+id/nav_average"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/label_active"/>
+            -->
+        <item
+            android:id="@+id/nav_current"
+            android:icon="@drawable/ic_accessibility_black_36dp"
+            android:title="@string/label_current"/>
+        <!--<item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_beenhere_black_36dp"
+            android:title="@string/label_history"/>
+            -->
+    </group>
+<!--
+    <item android:title="@string/label_settings">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="@string/label_settings"/>
+        </menu>
+    </item>
+-->
+</menu>
