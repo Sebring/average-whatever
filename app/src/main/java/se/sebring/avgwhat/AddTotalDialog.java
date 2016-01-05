@@ -18,7 +18,7 @@ public class AddTotalDialog extends DialogFragment implements TextView.OnEditorA
     public static final int FLAG_GOAL = 1;
 
     public interface AddTotalDialogListener {
-        void onFinishEditDialog(int inputValue, int flag);
+        void onAddTotalDialogFinished(int inputValue, int flag);
     }
 
     private EditText mEditText;
@@ -41,7 +41,7 @@ public class AddTotalDialog extends DialogFragment implements TextView.OnEditorA
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialog, container);
-        mEditText = (EditText) view.findViewById(R.id.txt_your_name);
+        mEditText = (EditText) view.findViewById(R.id.text);
 
         int flag = getArguments().getInt(FLAG);
         String title = flag == FLAG_COUNT ? getString(R.string.label_add) : getString(R.string.label_goal);
@@ -61,7 +61,7 @@ public class AddTotalDialog extends DialogFragment implements TextView.OnEditorA
         if (EditorInfo.IME_ACTION_DONE == actionId) {
             // Return input text to activity
 
-            mListener.onFinishEditDialog(Integer.parseInt(mEditText.getText().toString()), getArguments().getInt(FLAG));
+            mListener.onAddTotalDialogFinished(Integer.parseInt(mEditText.getText().toString()), getArguments().getInt(FLAG));
             this.dismiss();
             return true;
         }

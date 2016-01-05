@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,8 +21,11 @@ import java.util.Date;
 
 import se.sebring.avgwhat.databinding.SequenceDetailsBinding;
 
-public class SequenceDetailFrag extends Fragment implements AddTotalDialog.AddTotalDialogListener, RenameDialog.RenameDialogListener, NewDateDialog.DateDialogListener {
+public class SequenceDetailFrag extends Fragment implements AddTotalDialog.AddTotalDialogListener, EditDialog.EditDialogListener, NewDateDialog.DateDialogListener {
     private static final String TAG = SequenceDetailFrag.class.getCanonicalName();
+
+    public static final int EXTRA_NAME = 1;
+    public static final int EXTRA_GOAL = 2;
 
     private Sequence mSequence;
     private SequenceManager.SequenceHandler mHandler;
@@ -98,11 +102,15 @@ public class SequenceDetailFrag extends Fragment implements AddTotalDialog.AddTo
                 Snackbar.make(getView(), "Settings!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 break;
             case R.id.action_name:
-                RenameDialog dlg = RenameDialog.newInstance(this);
+                EditDialog dlg = EditDialog.newInstance(this, R.layout.string_edit_dialog, EXTRA_NAME);
+                dlg.setTitle(getString(R.string.action_rename));
+                dlg.setEditData(R.id.text, InputType.TYPE_CLASS_TEXT);
                 dlg.show(getChildFragmentManager(), "dialog");
                 break;
             case R.id.action_goal:
-                AddTotalDialog goalDlg = AddTotalDialog.newInstance(this, AddTotalDialog.FLAG_GOAL);
+                EditDialog goalDlg = EditDialog.newInstance(this, R.layout.string_edit_dialog, EXTRA_GOAL);
+                goalDlg.setTitle(getString(R.string.action_goal));
+                goalDlg.setEditData(R.id.text, InputType.TYPE_CLASS_NUMBER);
                 goalDlg.show(getChildFragmentManager(), "dialog");
                 break;
             case R.id.action_date:
@@ -117,25 +125,27 @@ public class SequenceDetailFrag extends Fragment implements AddTotalDialog.AddTo
     }
 
     @Override
-    public void onFinishEditDialog(int inputValue, int flag) {
+    public void onAddTotalDialogFinished(int inputValue, int flag) {
         switch(flag) {
             case AddTotalDialog.FLAG_COUNT:
                 mSequence.incrementCount(inputValue);
-                break;
-            case AddTotalDialog.FLAG_GOAL:
-                mSequence.setGoal(inputValue);
-                updateTitle();
                 break;
         }
         mHandler.updateSequence(mSequence);
     }
 
     @Override
-    public void onRenameDialogFinished(String name) {
-        mSequence.setName(name);
+    public void onEditDialogFinished(String name, int extra) {
+        switch(extra) {
+            case EXTRA_NAME:
+                mSequence.setName(name);
+                break;
+            case EXTRA_GOAL:
+                mSequence.setGoal(Integer.parseInt(name));
+                break;
+        }
+        updateTitle();
         mHandler.updateSequence(mSequence);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(mSequence.getName());
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Average " + mSequence.getName());
         getActivity().invalidateOptionsMenu();
     }
 
