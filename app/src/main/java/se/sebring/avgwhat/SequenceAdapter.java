@@ -94,7 +94,4 @@ public class SequenceAdapter extends RecyclerView.Adapter<SequenceAdapter.ViewHo
             return true;
         }
     }
-
-
-
 }

@@ -10,7 +10,7 @@
     >
 
     <EditText
-        android:id="@+id/txt_your_name"
+        android:id="@+id/text"
         style="@style/TextAppearance.AppCompat.Title"
         android:textSize="16sp"
         android:layout_width="256dp"
@@ -20,6 +20,5 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:imeOptions="actionDone"
-        android:inputType="text"
-        tools:text="Pushups"/>
+        />
 </LinearLayout>

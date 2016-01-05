@@ -10,7 +10,7 @@
    >
 
     <EditText
-        android:id="@+id/txt_your_name"
+        android:id="@+id/text"
         style="@style/TextAppearance.AppCompat.Title"
         android:textSize="24sp"
         android:layout_width="72dp"

@@ -37,7 +37,7 @@ public class NewDateDialog extends DialogFragment implements TextView.OnEditorAc
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialog, container);
-        mEditText = (EditText) view.findViewById(R.id.txt_your_name);
+        mEditText = (EditText) view.findViewById(R.id.text);
         getDialog().setTitle("Enter new epoc");
 
         // Show soft keyboard automatically
