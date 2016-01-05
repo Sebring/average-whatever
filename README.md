@@ -2,9 +2,9 @@
 Average Whatever will calcultate your average per day of an activity of your choice. 
 
 You:
-* decide what activity by specifying a suitable name
-* set a daily goal that you which to reach
-* track the activity by incrementing occurances
+* define the activity by specifying a suitable name
+* provide a goal, that is the calculated average per day you aim for
+* track the activity by incrementing occurances, preferably at a dayly basis
 
 Average Whatever:
 * will keep track of total occurances
