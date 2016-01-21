@@ -16,3 +16,4 @@ Average Whatever:
 ### Keep it up
 <img src='http://sebring.github.io/average-whatever/img/pushups_20_days.png' width='200' />
 <img src='http://sebring.github.io/average-whatever/img/pushups_60_days.png' width='200' />
+<img src='http://sebring.github.io/average-whatever/img/pushups_80_days.png' width='200' />
